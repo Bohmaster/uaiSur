@@ -49,5 +49,7 @@
   background: black;
 }
 
+ul.nav a:hover { color: red !important; }
 
+ul.nav a:visited { color: red !important; }
 

@@ -1,0 +1,26 @@
+{
+  "ids": {
+    "User": 1,
+    "AccessToken": 1,
+    "ACL": 1,
+    "RoleMapping": 1,
+    "Role": 1,
+    "Noticia": 1,
+    "Categoria": 4,
+    "Video": 1
+  },
+  "models": {
+    "User": {},
+    "AccessToken": {},
+    "ACL": {},
+    "RoleMapping": {},
+    "Role": {},
+    "Noticia": {},
+    "Categoria": {
+      "2": "{\"titulo\":\"Almafuertes\",\"descripcion\":\"\",\"id\":2}",
+      "3": "{\"titulo\":\"Entre/Vistas\",\"descripcion\":\"\",\"id\":3}",
+      "3": "{\"titulo\":\"Entre/Vistasss\",\"descripcion\":\"\",\"id\":4}"
+    },
+    "Video": {}
+  }
+}

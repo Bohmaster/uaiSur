@@ -5,12 +5,18 @@ angular
   .directive('navbar', function() {
     return {
       restrict: 'E',
-      templateUrl: 'js/modules/core/elements/navbar.html',
-      controller: function($scope) {
-        $scope.greets = "Navbar controller";
-      },
-      link: function(scope, elem, attrs) {
-
+      templateUrl: 'js/modules/core/elements/navbar.html'
+    }}
+  )
+  .directive('fileInput', function($parse) {
+    return {
+      restrict: 'A',
+      link: function(scope, elm, attrs) {
+        elm.bind('change', function() {
+          $parse(attrs.fileInput)
+            .assign(scope, elm[0].files);
+          scope.$apply();
+        });
       }
     }
   });

@@ -1,13 +1,28 @@
 var loopback = require('loopback');
 var boot = require('loopback-boot');
+var path = require('path');
 
 var app = module.exports = loopback();
+
+var ds = loopback.createDataSource({
+  connector: require('loopback-component-storage'),
+  provider: 'filesystem',
+  root: path.join(__dirname, 'storage')
+});
+
+var Container = ds.createModel('container');
+app.model(Container);
+
+app.use(loopback.static(path.resolve(__dirname)));
+
+app.use(loopback.favicon());
 
 app.start = function() {
   // start the web server
   return app.listen(function() {
     app.emit('started');
     console.log('Web server listening at: %s', app.get('url'));
+    console.log(path.join(__dirname, 'storage'));
   });
 };
 

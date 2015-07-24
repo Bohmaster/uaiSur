@@ -42,7 +42,8 @@
 
   color: white;
 
-  padding: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .quote {
@@ -106,7 +107,9 @@
   text-align: center;
 }
 
-
+.bold {
+  font-weight: bold;
+}
 
 /* FONTS */
 
@@ -149,3 +152,11 @@
   font-family: 'AlegryaSans';
   src: url('../fonts/AlegreyaSans-Regular.otf')
 }
+
+.sur {
+  font-family: AlegryaSans-Light, sans-serif;
+  font-size: 32px;
+  color: black;
+}
+
+

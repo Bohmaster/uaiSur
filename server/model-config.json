@@ -25,5 +25,17 @@
   "Role": {
     "dataSource": "db",
     "public": false
+  },
+  "Noticia": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Categoria": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Video": {
+    "dataSource": "db",
+    "public": true
   }
 }

@@ -5,7 +5,7 @@
     "ACL": 1,
     "RoleMapping": 1,
     "Role": 1,
-    "Noticia": 1,
+    "Noticia": 4,
     "Categoria": 4,
     "Video": 1
   },
@@ -15,10 +15,12 @@
     "ACL": {},
     "RoleMapping": {},
     "Role": {},
-    "Noticia": {},
+    "Noticia": {
+      "1": "{\"foto_principal\":\"logo8.jpg\",\"foto_miniatura\":\"logo7.jpg\",\"imagenes\":[],\"volanta\":\"231231\",\"titulo\":\"12313\",\"descripcion\":\"2131d\",\"cuerpo\":\"<p><strong>asdasdasd</strong></p>\",\"categoriaId\":2,\"id\":1}",
+      "3": "{\"foto_principal\":\"star_trek_world-1920x1200.jpg\",\"foto_miniatura\":\"space_horizon-1920x1200.jpg\",\"imagenes\":[],\"volanta\":\"sad\",\"titulo\":\"asda\",\"descripcion\":\"dsadsasda\",\"cuerpo\":\"<p><em>sdasdad</em>sa</p>\",\"categoriaId\":2,\"id\":3}"
+    },
     "Categoria": {
       "2": "{\"titulo\":\"Almafuertes\",\"descripcion\":\"\",\"id\":2}",
-      "3": "{\"titulo\":\"Entre/Vistas\",\"descripcion\":\"\",\"id\":3}",
       "3": "{\"titulo\":\"Entre/Vistasss\",\"descripcion\":\"\",\"id\":4}"
     },
     "Video": {}

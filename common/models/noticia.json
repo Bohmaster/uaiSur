@@ -27,9 +27,6 @@
     "cuerpo": {
       "type": "string"
     },
-    "propertyName67": {
-      "type": "string"
-    },
     "destacada": {
       "type": "boolean"
     }

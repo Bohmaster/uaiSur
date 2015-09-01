@@ -38,7 +38,7 @@ angular.module('uai-news.module.news')
           volanta: $scope.noticia.volanta,
           titulo: $scope.noticia.titulo,
           foto_principal: $scope.files[0].name || '',
-          foto_miniatura: $scope.files[1].name || '',
+          foto_miniatura: ($scope.files.length > 1) ? $scope.files[1].name : '',
           imagenes: [],
           descripcion: $scope.noticia.descripcion,
           cuerpo: $scope.noticia.cuerpo,
@@ -47,14 +47,15 @@ angular.module('uai-news.module.news')
         }, function(data) {
           console.log(data);
         });
-        $scope.upload();
+        upload();
         loadNoticias();
       };
 
       /**
        * Editar noticia
        */
-      $scope.editarNoticia = function(modelId) {
+      $scope.editarNoticia = function(modelId, categoriaId) {
+        console.log(categoriaId);
         $modal.open({
           templateUrl: 'js/modules/news/views/editar_noticia.html',
           resolve: {
@@ -65,12 +66,31 @@ angular.module('uai-news.module.news')
           controller: function($scope, $rootScope, noticia, Noticia, Categoria, $http) {
             $scope.noticia = noticia;
 
+            $scope.upload = function() {
+              var fd = new FormData();
+              angular.forEach($scope.files, function(file) {
+                fd.append('file', file);
+              });
+              $http.post('/api/containers/images/upload',
+                fd, {
+                  transformRequest: angular.identity,
+                  headers: {'Content-Type': undefined}
+                }
+              ).success(function(d){
+                  console.log(d);
+                  console.log(1, $scope.files);
+                })
+                .error(function(e) {
+                  console.log(e);
+                });
+            };
+
             $scope.editarNoticia = function() {
               $http.put('/api/noticia/' + modelId, {
                 volanta: $scope.noticia.volanta,
                 titulo: $scope.noticia.titulo,
                 foto_principal: $scope.files[0].name || $scope.noticia.foto_principal,
-                foto_miniatura: $scope.files[1].name || $scope.noticia.foto_miniatura,
+                foto_miniatura: ($scope.files.length > 1) ? $scope.files[1].name : $scope.noticia.foto_miniatura,
                 imagenes: [],
                 descripcion: $scope.noticia.descripcion,
                 cuerpo: $scope.noticia.cuerpo,
@@ -79,6 +99,7 @@ angular.module('uai-news.module.news')
                 .then(function(data) {
                   console.log(data);
                   $rootScope.$broadcast('noticia.editada');
+                  $scope.upload();
                   $scope.$close(data);
                 });
             }
@@ -114,12 +135,18 @@ angular.module('uai-news.module.news')
           }
         ).success(function(d){
             console.log(d);
-            console.log($scope.files);
+            console.log(1, $scope.files);
           })
           .error(function(e) {
             console.log(e);
           });
       };
+
+      $scope.$on('noticia.editada', function(event) {
+
+        loadNoticias();
+
+      });
 
       /**
        * Obtener categoriaId
@@ -129,7 +156,7 @@ angular.module('uai-news.module.news')
         var z = $('#categorias');
         var val = $(z).find('option[value="' + x + '"]');
         var endVal = val.attr('id');
-        console.log(x, z, val);
+        console.log(endVal);
         $scope.noticia.categoriaId = endVal;
       });
 

@@ -23,11 +23,6 @@
       <input type="checkbox" id="destacada" class="form-control focus margin" name="destacada"
              autocomplete="off" ng-model="noticia.destacada">
       <label for="files">Imagen</label>
-      <input type="file"
-             file-input="files"
-             class="margin"
-             multiple
-        />
       <li ng-repeat="file in files">{{file.name}}</li>
     </div>
     <button class="btn btn-default" ng-disabled="todoForm.$invalid" ng-click="agregarNoticia()">Agregar</button>
@@ -42,7 +37,7 @@
          ng-click="borrarNoticia(n.id)">
       </i>
       <img src="storage/images/{{ n.foto_miniatura }}" class="left">
-      <div class="left title">
+      <div class="left">
         {{ n.titulo }}
       </div>
       <div class="clear"></div>

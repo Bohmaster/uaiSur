@@ -24,110 +24,28 @@
   <script src="vendor/angular-bootstrap/ui-bootstrap-tpls.js"></script>
   <script src="vendor/angular-resource/angular-resource.js"></script>
   <script src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="vendor/tinymce/tinymce.min.js"></script>
+  <script src="vendor/angular-ui-tinymce/src/tinymce.js"></script>
 
   <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenMax.min.js"></script>
   <!-- endscripts -->
 
 </head>
-<body ng-controller="MainController">
+<body ng-controller="HomeController">
 
   <navbar></navbar>
 
-  <section id="destacados">
-    <news-block></news-block>
-  </section>
-
-  <section class="pie">
-
-  </section>
-
-  <section class="pie-2">
-    <div class="container-fluid">
-      <h1 class="quote-white">
-        GUAY
-      </h1>
-    </div>
-  </section>
-
-  <section id="destacados-black">
-    <div class="container">
-      <div class="row bord" id="main">
-        <a href="misbo.html">
-          <div class="col-md-4 normal">
-            <div class="title">El color, la color, los colores.</div>
-            <div class="description">
-              En una charla corta, pero con muchas definiciones, la rapera invita a salir de la lógica blanco-negro con que muchas veces se simplifica la realidad. La despenalización del aborto, y el fin de la violencia de género, las prioridades.
-            </div>
-            <img src="images/noticias/misbo/miss%20bo%20chica.jpg" width="100%" height="390"  alt=""/>
-          </div>
-        </a>
-        <a href="rocambo.html">
-          <div class="col-md-4 normal">
-            <div class="title">MONO SAMPLER.</div>
-            <div class="description">
-              A poco de haber sacado su propio libro, el dibujante habla de su trabajo con los Redondos...
-            </div>
-            <img src="images/noticias/rocambole/roca%20chica.jpg" width="100%" height="300"  alt=""/>
-          </div>
-        </a>
-        <a href="seixas.html">
-            <div class="col-md-4 normal">
-              <div class="title">O grande mito do rocanrol</div>
-              <div class="description">
-                Este 28 de junio se cumplen 70 años del nacimiento del roquero más importante de la música brasilera. Vida, obra y legado del músico que se animó al rock en tiempos de samba y bossa nova.              </div>
-              <img src="images/noticias/seixas/seixas%20chica.jpg" width="100%"  alt=""/>
-            </div>
-        </a>
-        <a href="femicidios.html">
-          <div class="col-md-4 normal">
-            <div class="title">Femicidios de macho y policía</div>
-            <div class="description">
-              Mujeres y humildes: doble chance de sufrir la violencia de las instituciones
-            </div>
-            <img src="images/noticias/femicidios/femi%20chica.jpg" width="100%" height="300" alt=""/>
-          </div>
-        </a>
-        <a href="alberdi.html">
-          <div class="col-md-4 normal">
-            <div class="title">CIUDAD & PAMPA</div>
-            <div class="description">
-              Por calle Baigorria, tras las murallas exteriores de Circunvalación, se puede llegar a una región que los cartógrafos insisten en llamar Nuevo Alberdi            </div>
-            <img src="images/noticias/alberdi/n%20alberdi%20chica.jpg" width="100%" height="300"  alt=""/>
-          </div>
-        </a>
-        <a href="roberto.html">
-          <div class="col-md-4 normal">
-            <div class="title">Roberto Tagashira. La Cámpora</div>
-            <div class="description">
-              Roberto tiene 19 años y vive en el barrio Ciudadela de San Miguel de Tucumán. Estudia derecho y milita desde 2010.
-            </div>
-            <img src="images/noticias/roberto/roberto%20chica.jpg" width="100%" height="300"  alt=""/>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="pie-3"></section>
-
-  <section class="pie-2">
-    <div class="container-fluid">
-      <h1 class="quote">
-        SUR
-      </h1>
-    </div>
-  </section>
-
+  <ui-view></ui-view>
 
 
   <!-- app scripts -->
   <script src="js/app.js"></script>
 
   <script src="js/modules/core/app.core.js"></script>
-  <script src="js/modules/core/services/lb-services.js"></script>
-  <script src="js/modules/core/controllers/MainController.js"></script>
-  <script src="js/modules/core/config/cfg.js"></script>
   <script src="js/modules/core/config/routes.js"></script>
+  <script src="js/modules/core/services/lb-services.js"></script>
+  <script src="js/modules/core/controllers/HomeController.js"></script>
+  <script src="js/modules/core/config/cfg.js"></script>
   <script src="js/modules/core/directives/navbar.js"></script>
 
   <script src="js/modules/news/app.news.js"></script>

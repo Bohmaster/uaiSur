@@ -1,7 +1,58 @@
 'use strict';
 angular.module('uai-news.module.news')
   .controller('NoticiasController',
-    function($scope, $http, $modal, Noticia, Categoria) {
+    function($scope, $http, $stateParams, $modal, Noticia, Categoria) {
+
+      if ($stateParams.articuloId) {
+
+        console.log($stateParams.articuloId);
+
+        $scope.noticia = [];
+
+        Noticia.find({
+          filter: {
+            where: {
+              id: $stateParams.articuloId
+            }
+          }
+        }, function(art) {
+          $scope.noticia = art[0];
+          console.log("sabE", art);
+        });
+
+
+      }
+
+      if ($stateParams.categoriaId) {
+
+        $scope.noticiasS = [];
+        $scope.categoriaS = null;
+
+        Noticia.find({
+          filter: {
+            where: {
+              categoriaId : $stateParams.categoriaId
+            }
+          }
+        }, function(data) {
+          console.log("state", data);
+          $scope.noticiasS = data;
+        });
+
+        Categoria.find({
+          filter: {
+            where: {
+              id: $stateParams.categoriaId
+            }
+          }
+        }, function(data) {
+          $scope.categoriaS = data;
+          console.log(99, data);
+        }, function(err) {
+          console.log(88, data);
+        });
+
+      }
 
       $scope.noticias = [];
 
@@ -28,7 +79,10 @@ angular.module('uai-news.module.news')
       loadNoticias();
       loadCategorias();
 
-      $scope.noticia = {};
+      $scope.noticia = {
+        destacada: false,
+        esVideo: false
+      };
 
       /**
        * Agregar noticia
@@ -43,11 +97,12 @@ angular.module('uai-news.module.news')
           descripcion: $scope.noticia.descripcion,
           cuerpo: $scope.noticia.cuerpo,
           categoriaId: $scope.noticia.categoriaId,
-          destacada: $scope.noticia.destacada
+          destacada: $scope.noticia.destacada,
+          esVideo: $scope.noticia.esVideo
         }, function(data) {
           console.log(data);
         });
-        upload();
+        $scope.upload();
         loadNoticias();
       };
 
@@ -65,6 +120,15 @@ angular.module('uai-news.module.news')
           },
           controller: function($scope, $rootScope, noticia, Noticia, Categoria, $http) {
             $scope.noticia = noticia;
+
+            $('#categoria').on('input', function() {
+              var x = $('#categoria').val();
+              var z = $('#categorias');
+              var val = $(z).find('option[value="' + x + '"]');
+              var endVal = val.attr('id');
+              console.log(endVal);
+              $scope.noticia.categoriaId = endVal;
+            });
 
             $scope.upload = function() {
               var fd = new FormData();
@@ -86,22 +150,51 @@ angular.module('uai-news.module.news')
             };
 
             $scope.editarNoticia = function() {
-              $http.put('/api/noticia/' + modelId, {
-                volanta: $scope.noticia.volanta,
-                titulo: $scope.noticia.titulo,
-                foto_principal: $scope.files[0].name || $scope.noticia.foto_principal,
-                foto_miniatura: ($scope.files.length > 1) ? $scope.files[1].name : $scope.noticia.foto_miniatura,
-                imagenes: [],
-                descripcion: $scope.noticia.descripcion,
-                cuerpo: $scope.noticia.cuerpo,
-                categoriaId: $scope.noticia.categoriaId
-              })
-                .then(function(data) {
-                  console.log(data);
-                  $rootScope.$broadcast('noticia.editada');
-                  $scope.upload();
-                  $scope.$close(data);
-                });
+              if ($scope.files) {
+
+                $http.put('/api/noticia/' + modelId, {
+                  volanta: $scope.noticia.volanta,
+                  titulo: $scope.noticia.titulo,
+                  foto_principal: $scope.files[0].name || $scope.noticia.foto_principal,
+                  foto_miniatura: ($scope.files.length > 1) ? $scope.files[1].name : $scope.noticia.foto_miniatura,
+                  imagenes: [],
+                  descripcion: $scope.noticia.descripcion,
+                  cuerpo: $scope.noticia.cuerpo,
+                  categoriaId: $scope.noticia.categoriaId
+                })
+                  .success(function(data) {
+                    console.log(data);
+                    $rootScope.$broadcast('noticia.editada');
+                    $scope.upload();
+                    $scope.$close(data);
+                  })
+                  .error(function(err) {
+                    console.log(err);
+                  });
+
+              } else {
+
+                $http.put('/api/noticia/' + modelId, {
+                  volanta: $scope.noticia.volanta,
+                  titulo: $scope.noticia.titulo,
+                  foto_principal: $scope.noticia.foto_principal,
+                  foto_miniatura: $scope.noticia.foto_miniatura,
+                  imagenes: [],
+                  descripcion: $scope.noticia.descripcion,
+                  cuerpo: $scope.noticia.cuerpo,
+                  categoriaId: $scope.noticia.categoriaId
+                })
+                  .success(function(data) {
+                    console.log(data);
+                    $rootScope.$broadcast('noticia.editada');
+                    $scope.upload();
+                    $scope.$close(data);
+                  })
+                  .error(function(err) {
+                    console.log(err);
+                  });
+
+              }
             }
           }
         });
@@ -159,5 +252,19 @@ angular.module('uai-news.module.news')
         console.log(endVal);
         $scope.noticia.categoriaId = endVal;
       });
+
+      /**
+       * tinyMCE Options
+       */
+
+      $scope.tinyMCEOptions = {
+        onChange: function(e) {
+
+        },
+        inline: false,
+        plugins : 'advlist autolink link image lists charmap print preview media',
+        skin: 'lightgray',
+        theme : 'modern'
+      };
 
     });

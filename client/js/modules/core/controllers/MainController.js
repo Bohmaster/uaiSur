@@ -1,13 +1,15 @@
 'use strict';
 angular.module('uai-news.module.core')
-  .controller('HomeController',
+  .controller('MainController',
   function($scope, $http, $modal, Noticia, Categoria, Video) {
 
-    $scope.videoModal = function() {
-      $modal.open({
-        templateUrl: "video.html",
-        size: "lg"
-      });
-    }
+    $scope.categorias = [];
+
+    Categoria.find(function(data) {
+      $scope.categorias = data;
+      console.log(66, data)
+    }, function(err){
+      console.log(err);
+    });
 
   });

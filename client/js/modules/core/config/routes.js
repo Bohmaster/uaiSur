@@ -14,8 +14,13 @@ angular.module('uai-news.module.core')
         controller: 'HomeController'
       })
       .state('app.noticias', {
-        url: 'noticias/:categoriaId',
+        url: '/noticias/:categoriaId',
         templateUrl: 'js/modules/news/views/noticias.html',
+        controller: "NoticiasController"
+      })
+      .state('app.noticia', {
+        url: '/articulo/:articuloId',
+        templateUrl: 'js/modules/news/views/noticia.html',
         controller: 'NoticiasController'
       })
       .state('app.admin', {

@@ -29,6 +29,25 @@
 
 }
 
+.sep {
+  margin: 2px;
+  width: 288px;
+}
+
+.description-cat {
+  position: absolute;
+  bottom: 5px;
+
+  font-family: 'AlegryaSans-Medium', sans-serif;
+
+  font-size: 18px;
+
+  color: white;
+
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .description {
   position: absolute;
   height: 100px;
@@ -80,6 +99,21 @@
   margin-top: -10px;
 
   color: red;
+}
+
+.title-cat {
+  position: absolute;
+  height: 50px;
+  top: 5px;
+
+  font-family: 'Chinese', Fallback, sans-serif;
+
+  font-size: 30px;
+
+  padding: 5px;
+
+  color: white;
+
 }
 
 #cuerpo {
@@ -159,4 +193,8 @@
   color: black;
 }
 
+.margin {
 
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

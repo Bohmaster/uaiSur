@@ -1,48 +1,27 @@
 <div class="container">
   <div class="row bord" id="main">
-    <a href="militares.html">
-      <div class="col-md-8 normal principal">
-        <div class="title">MILITARES SON LOS NUESTROS</div>
+      <div class="col-md-8 normal principal" ui-sref="app.noticia({articuloId: destacada[0].id })">
+        <div class="title">{{ destacada[0].titulo }}</div>
         <div class="description">
-          Desde sus comienzos, el Ejército Argentino estuvo lleno de jóvenes que le pusieron el cuerpo a la idea de soberanía.
-          Entrevistamos a pibes que forman parte de la fuerza, para conocer sus experiencias, sus pensamientos y sus sueños.
+          {{ destacada[0].descripcion }}
         </div>
-        <img src="images/noticias/militares/militares grande.jpg" width="100%" height="450"  alt=""/>
+        <img src="storage/images/{{ destacada[0].foto_principal }}" width="100%" height="450"  alt=""/>
       </div>
-    </a>
-    <div class="col-md-4 normal video " ng-click="videoModal()">
-      <div class="title">Video destacado</div>
+    <div class="col-md-4 normal video" ui-sref="app.noticia({articuloId: video[0].id})">
+      <div class="title">{{ video[0].titulo }}</div>
       <div class="description">
-        Eduardo Mateo es Super Mario Bros Remix "Yulelé"
+        {{ video[0].descripcion }}
       </div>
-      <img src="images/fantasma.jpg" width="100%" height="300"  alt=""/>
+      <img src="storage/images/{{ video[0].foto_principal }}" width="100%" height="300"  alt=""/>
     </div>
-    <a href="allende.html">
-      <div class="col-md-4 normal">
-        <div class="title">"En Chile existe una..."</div>
+
+      <div class="col-md-4 normal" ng-repeat="n in primeras" ng-init="init()" ui-sref="app.noticia({articuloId: n.id})">
+        <div class="title">{{ n.titulo }}</div>
         <div class="description">
-          Pablo Sepúlveda es hijo de Héctor Sepúlveda y Carmen Paz Alende, la segunda de las tres hijas de Hortensia Bussi y Salvador Allende, el ex presidente chileno. Reflexiona sobre las debilidades de la “vía chilena” al socialismo pero las identifica como enseñanzas para los procesos revolucionarios actuales.
+          {{ n.descripcion }}
         </div>
-        <img src="images/noticias/allende/allende chica.jpg" width="100%"  alt=""/>
+        <img src="storage/images/{{ n.foto_principal }}" width="100%" height="300"  alt=""/>
       </div>
-    </a>
-    <a href="chispas.html">
-      <div class="col-md-4 normal">
-        <div class="title">Chispas</div>
-        <div class="description">
-          La Revolución de Mayo la encabezaron pibes y viejos que pelearon por un país más justo...
-        </div>
-        <img src="images/noticias/chispas/chica.jpg" width="100%" height="300" alt=""/>
-      </div>
-    </a>
-    <a href="inter.html">
-      <div class="col-md-4 normal">
-        <div class="title">La Comunidad</div>
-        <div class="description">
-          Entre las laderas de las montañas patagónicas, rodeado de bosques que invitan a perderse en su espesura, se está erigiendo el Barrio Intercultural, insólito proyecto soñado y puesto en marcha por los Vecinos Sin Techo de San Martín de los Andes.
-        </div>
-        <img src="images/noticias/inter/inter chica.jpg" width="100%" height="300"  alt=""/>
-      </div>
-    </a>
+
   </div>
 </div>

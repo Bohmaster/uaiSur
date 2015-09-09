@@ -29,6 +29,12 @@
     },
     "destacada": {
       "type": "boolean"
+    },
+    "esVideo": {
+      "type": "boolean"
+    },
+    "fecha": {
+      "type": "date"
     }
   },
   "validations": [],

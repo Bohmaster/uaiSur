@@ -13,14 +13,16 @@ var ds = loopback.createDataSource({
 var Container = ds.createModel('container');
 app.model(Container);
 
-app.use(loopback.static(path.resolve(__dirname)));
+app.use(loopback.static(path.resolve('client')));
 
 app.use(loopback.favicon());
+
 
 app.start = function() {
   // start the web server
   return app.listen(function() {
     app.emit('started');
+    console.log(path.resolve('client'));
     console.log('Web server listening at: %s', app.get('url'));
     console.log(path.join(__dirname, 'storage'));
   });

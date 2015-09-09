@@ -1,0 +1,35 @@
+<div class="container" style="margin-top: 150px">
+
+  <div id="volanta" class="bold">
+    {{ noticia.volanta }}
+  </div>
+
+  <div id="titulo">
+    {{ noticia.titulo }}
+  </div>
+
+  <div id="imagen">
+    <img src="storage/images/{{ noticia.imagen_principal}}" width="100%" alt="">
+  </div>
+
+  <div id="descripcion">
+
+    {{ noticia.descripcion }}
+
+  </div>
+
+  <div id="cuerpo">
+
+    <p compile="{{ noticia.cuerpo }}"></p>
+
+  </div>
+
+  <div socialshare
+       socialshare-provider="facebook"
+       socialshare-text="sabeasñdlaksñdklasdkalñskdñkalñsdlkñasd"
+       socialshare-url="http://www.suplementoguay.com.ar/#/app/articulo/24"
+       socialshare-caption="LA CONCHA DE LA LORA"
+       socialshare-description="MERCA LOCA">Share</div>
+
+
+</div>

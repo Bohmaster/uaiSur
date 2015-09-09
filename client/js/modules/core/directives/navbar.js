@@ -34,9 +34,15 @@ angular
         attrs.compile = y;
 
         return function postLink(scope, elem, attrs) {
-          var linkFn = $compile(scope.data);
-          var content = linkFn(scope);
-          elem.append(content);
+
+          attrs.$observe("compile", function(value) {
+
+            var linkFn = $compile(scope.data);
+            var content = linkFn(scope);
+            elem.append(content);
+
+          })
+
         }
       }
 
